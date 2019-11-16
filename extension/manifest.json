@@ -1,0 +1,43 @@
+{
+  "name": "__MSG_extName__",
+  "version": "0.0",
+  "description": "__MSG_extDescription__",
+  "author": "Anton Bershanskiy",
+  "manifest_version": 2,
+  "default_locale": "en",
+  "browser_action": {
+    "default_title": "__MSG_extName__",
+    "default_popup": "pages/popup/popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "pages/options_ui/options_ui.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches":[
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://www.youtube-nocookie.com/*"
+      ],
+      "all_frames": true,
+      "js": [
+        "content_scripts.js"
+      ]
+    }
+  ],
+  "content_security_policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src  https://*; object-src 'none'; base-uri 'none'; child-src 'none'; font-src 'none'; form-action 'none'; frame-ancestors 'none'; frame-src 'none'; media-src 'none'; navigate-to 'none'; trusted-types 'none'; prefetch-src 'none'",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}

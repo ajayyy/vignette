@@ -1,0 +1,15 @@
+{
+  "units": "KiB",
+  "videoSegments": {
+    "chrome": 216,
+    "firefox": 224
+  },
+  "vignette": {
+    "chrome": 39,
+    "firefox": null
+  },
+  "sponsorBlock": {
+    "chrome": 187,
+    "firefox": 194
+  }
+}

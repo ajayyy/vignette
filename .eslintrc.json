@@ -1,0 +1,30 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "jasmine": true,
+        "webextensions": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "eqeqeq": "error",
+        "no-var": "error",
+        "semi": [
+          "error",
+          "always"
+        ]
+    }
+}

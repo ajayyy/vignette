@@ -1,0 +1,54 @@
+{
+  "name": "vignette",
+  "version": "0.0.0",
+  "description": "Broweser extension to skip annoying parts of the videos, including sponsor and merch spots, social media plugs, social plugs and intros and logos.",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build-dev": "./node_modules/.bin/webpack --config extension/webpack.config.js --mode=development --watch",
+    "build": "./node_modules/.bin/webpack --config extension/webpack.config.js --mode=production",
+    "clean": "rm -rf build_extension;",
+    "eslint": "node_modules/.bin/eslint extension/ server/ --ext ts --ext js --fix",
+    "test": "npm run test-locale && npm run test-unit && npm run build && npm run eslint",
+    "test-locale": "node extension/test/locales.js",
+    "test-unit": "npm run test-unit-compile && npm run test-unit-run",
+    "test-unit-compile": "./node_modules/.bin/tsc server/crypto.spec.ts",
+    "test-unit-run": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "server": "node server/server.js",
+    "server-dev": "node server/server.js",
+    "server-database": "rm -f database.db && curl -k -O https://sponsor.ajay.app/database.db"
+  },
+  "author": "Anton Bershanskiy",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "0.0.91",
+    "@types/jasmine": "^3.4.6",
+    "@types/node": "^12.12.5",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
+    "copy-webpack-plugin": "^5.0.4",
+    "eslint": "^6.2.1",
+    "eslint-config-standard": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "get-video-id": "^3.1.4",
+    "jasmine": "^3.5.0",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.13.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "webpack-cli": "^3.3.7",
+    "webpack-extension-reloader": "^1.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jwk-to-pem": "^2.0.1",
+    "node-fetch": "^2.6.0",
+    "sqlite3": "^4.1.0",
+    "webpack": "^4.39.2"
+  }
+}

@@ -1,0 +1,75 @@
+<script>
+  const ctx = document.getElementById('sizeComparison').getContext('2d');
+  const colors = {
+    background: {
+      blue: "rgba(54, 162, 235, 0.2)",
+      green: "rgba(75, 192, 192, 0.2)"
+    },
+    border: {
+      blue: "rgba(54, 162, 235, 1)",
+      green: "rgba(75, 192, 192, 1)"
+    }
+  };
+
+  fetch('Benchmarks/size.json')
+    .then(response => response.json())
+    .then(data => {
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Vignette', 'SponsorBlock', 'VideoSegments'],
+          datasets: [{
+            label: 'Chrome package size (KiB)',
+            data: [
+              data.vignette.chrome,
+              data.sponsorBlock.chrome,
+              data.videoSegments.chrome
+            ],
+            backgroundColor: [
+              colors.background.blue,
+              colors.background.blue,
+              colors.background.blue,
+            ],
+            borderColor: [
+              colors.border.blue,
+              colors.border.blue,
+              colors.border.blue,
+            ],
+            borderWidth: 1
+          },
+          {
+            label: 'Firefox package size (KiB)',
+            data: [
+              data.vignette.firefox,
+              data.sponsorBlock.firefox,
+              data.videoSegments.firefox
+            ],
+            backgroundColor: [
+              colors.background.green,
+              colors.background.green,
+              colors.background.green,
+            ],
+            borderColor: [
+              colors.border.green,
+              colors.border.green,
+              colors.border.green,
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Extension size (less is better)'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    });
+</script>

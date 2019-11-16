@@ -1,0 +1,26 @@
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" id="svg_3" height="60" width="220" y="300" x="190" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_4" y="337.84375" x="199.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">Vignette Extension</text>
+  <rect stroke="#000" id="svg_5" height="50" width="200" y="150" x="200" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_6" y="185.84375" x="215.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">Vignette Server</text>
+  <rect stroke="#000" id="svg_7" height="80" width="250" y="20" x="40" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_8" y="49.84375" x="52.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">SponsorBlock Server</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_9" y="83.84375" x="90.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">local, fallback</text>
+  <rect stroke="#000" id="svg_10" height="80" width="250" y="20" x="310" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="#fff"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_12" y="53.84375" x="346.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">VideoSegments</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_13" y="83.84375" x="355.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">remote, fallback</text>
+  <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_14" y2="300" x2="300" y1="200" x1="300" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_15" y2="100" x2="480" y1="150" x1="300" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_18" y2="100" x2="150" y1="150" x1="300" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+ </g>
+</svg>

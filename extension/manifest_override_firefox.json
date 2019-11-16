@@ -1,0 +1,9 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "content_security_policy": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src  https://*; object-src 'none'; base-uri 'none'; child-src 'none'; font-src 'none'; form-action 'none'; frame-ancestors 'none'; frame-src 'none'; media-src 'none';"
+}

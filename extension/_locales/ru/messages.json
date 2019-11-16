@@ -1,0 +1,71 @@
+{
+  "extName": {
+    "message": "Vignette"
+  },
+  "extDescription": {
+    "message": "Пропускайте спонсорские рекламные вставки на YouTube."
+  },
+  "options_apperance_title": {
+    "message": "Интерфейс"
+  },
+  "options_segmentsBar_color_intro": {
+    "message": "Введения"
+  },
+  "options_segmentsBar_color_logo": {
+    "message": "Логотипы каналов"
+  },
+  "options_segmentsBar_color_merch": {
+    "message": "Мерчендайз"
+  },
+  "options_segmentsBar_color_social": {
+    "message": "Социальные сети"
+  },
+  "options_segmentsBar_color_sponsor": {
+    "message": "Спонсорские вставки"
+  },
+  "options_segmentsBar_enabled": {
+    "message": "Отображать видео сегменты поверх полоски прогресса видео."
+  },
+  "options_feedback": {
+    "message": "Предлагать голосовать за пропущенные сегменты."
+  },
+  "options_feedback_time": {
+    "message": "Как долго показывать это."
+  },
+  "options_serverAddress": {
+    "message": "Адрес сервера"
+  },
+  "options_userKeys_title": {
+    "message": "Криптографический ключ"
+  },
+  "options_userID": {
+    "message": "Уникальный идентификатор: "
+  },
+  "options_userKeys_export": {
+    "message": "Сохранить в буфер"
+  },
+  "options_userKeys_import": {
+    "message": "Импортировать"
+  },
+  "options_userKeys_new": {
+    "message": "Новый"
+  },
+  "options_userKeys_explanation": {
+    "message": "Сгенерировать новый уникальный идентификатор. Внимание: Все прошлые сегменты, которые Вы отправили больше не будут считаться Вашими. Сохраните этот идентификатор заранее, если он Вам нужен."
+  },
+  "options_userName": {
+    "message": "Имя"
+  },
+  "options_userName_placeholder": {
+    "message": "Безымянный"
+  },
+  "options_save": {
+    "message": "Сохранить"
+  },
+  "submissionManager_no_segments": {
+    "message": "Нет ни одного известного сегмента."
+  },
+  "submissionManager_submit": {
+    "message": "Отправить"
+  }
+}

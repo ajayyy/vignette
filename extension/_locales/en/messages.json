@@ -1,0 +1,106 @@
+{
+  "extName": {
+    "message": "Vignette",
+    "description": "Extension name."
+  },
+  "extDescription": {
+    "message": "Remove boring parts of YouTube videos like sponsorship inserts.",
+    "description": "Extension desctiption."
+  },
+  "options_apperance_title": {
+    "message": "Apperance",
+    "description": "The title of the 'Apperance' section."
+  },
+  "options_segmentsBar_color_intro": {
+    "message": "Video intro segment color",
+    "description": "The title of the color selector for the video intro segment."
+  },
+  "options_segmentsBar_color_logo": {
+    "message": "Channel logo segment color",
+    "description": "The title of the color selector for the channel logo segment."
+  },
+  "options_segmentsBar_color_merch": {
+    "message": "Merchendise segment color",
+    "description": "The title of the color selector for the merch segment."
+  },
+  "options_segmentsBar_color_social": {
+    "message": "Social plug segment color",
+    "description": "The title of the color selector for the social plug segment like 'we are on Facebook/Twitter/Reddit'."
+  },
+  "options_segmentsBar_color_sponsor": {
+    "message": "Video sponsor segment color",
+    "description": "The title of the color selector for the sponsor segment."
+  },
+  "options_segmentsBar_enabled": {
+    "message": "Display video segments on the video progress bar.",
+    "description": "The title of the checkbox for enabling the segments bar."
+  },
+  "options_feedback": {
+    "message": "Offer to vote on skipped segments.",
+    "description": "The checkbox label for option to offer to vote on video segments."
+  },
+  "options_feedback_time": {
+    "message": "Number of seconds to display the feedback UI for.",
+    "description": "The input field label for a checkbox to offer to vote on video segments, in seconds."
+  },
+  "options_serverAddress": {
+    "message": "Server Address",
+    "description": "The input field label for server address."
+  },
+  "options_userKeys_title": {
+    "message": "Your keys (private and public keys)",
+    "description": "The checkbox label for option to automatically report all errors to the server."
+  },
+  "options_userID_title": {
+    "message": "Your account",
+    "description": "The section header for for use unique identifier and keys."
+  },
+  "options_userID": {
+    "message": "Your unique identifier is ",
+    "description": "The display field label for user unique identifier."
+  },
+  "options_userKeys_export": {
+    "message": "Export to clipboard",
+    "description": "The button that displays the user private key so that it can be backed up."
+  },
+  "options_userKeys_import": {
+    "message": "Import",
+    "description": "The button that allows for import of a private key."
+  },
+  "options_userKeys_new": {
+    "message": "Reset",
+    "description": "The button that generates a new user identifier."
+  },
+  "options_userKeys_explanation": {
+    "message": "Generate new key pair for signing information sent to server. Warning: Your private key will be deleted. All previous section reports will no longer be attributed to you. Consider backing up the current private key.",
+    "description": "The button that generates a new key pair."
+  },
+  "options_userName": {
+    "message": "Account name",
+    "description": "The user's preferred account name."
+  },
+  "options_userName_placeholder": {
+    "message": "No name.",
+    "description": "The placeholder text for input field."
+  },
+  "options_save": {
+    "message": "Save",
+    "description": "Button that saves the data in the form."
+  },
+  "submissionManager_delete_segment": {
+    "message": "Delete",
+    "description": "Label of the button that appears next to each segment and deletes that segment."
+  },
+  "submissionManager_no_segments": {
+    "message": "There are no known segments yet.",
+    "description": "Message that appears in the submission manager when there are no known segments."
+  },
+  "submissionManager_submit": {
+    "message": "Submit",
+    "description": "Label of the button that appears in the submission manager."
+  },
+  "submissionManager_title": {
+    "message": "Segments",
+    "description": "Title of the submission pannel."
+  }
+}
