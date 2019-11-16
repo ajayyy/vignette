@@ -84,6 +84,7 @@ function onNavigation (videoNode : HTMLVideoElement) {
 
   // Retreive all segment info
   chrome.runtime.sendMessage(message, response => {
+    console.error(response);
     if (!(response && response.segments && response.segments.length)) {
       console.info('No segments found...');
     }
@@ -106,11 +107,11 @@ function onNavigation (videoNode : HTMLVideoElement) {
       customPanels.appendChild(transcriptManagerPanel);
       panels.after(customPanels);
 
-      const submissionManagerOptions = options.submissionManagerOptions;
+      const submissionManagerOptions = options.submissionManager;
       submissionManager = new SubmissionManager(submissionManagerPanel, submissionManagerOptions, segments, onUserInput);
 
       executeWhenDOMnodesLoaded(['BUTTON.ytp-subtitles-button'], (nodes : any) => {
-        const transcriptManagerOptions = options;
+        const transcriptManagerOptions = options.transcriptManager;
         transcriptManager = new TranscriptManager([transcriptManagerPanel, nodes[0]], transcriptManagerOptions, segments, onUserInput);
         transcriptManager.openPanel();
       });

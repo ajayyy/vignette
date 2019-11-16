@@ -21,12 +21,12 @@ export class SegmentsBar {
   private _videoNode: HTMLVideoElement;
   private _DOMcontainer: HTMLElement;
   private _options: any;
-  private _segments: Array<Segment>;
+  private _segments: Array<SegmentClientside>;
   private _durationChangeListener: (event: Event) => void;
 
   // options -- an object created from options.segmentsBar and defaultOptions.segmentsBar
   // videoInfo duraion
-  constructor (parentNode: HTMLElement, videoNode: HTMLVideoElement, segmentsBarOptions: HTMLElement, segments: Array<Segment>) {
+  constructor (parentNode: HTMLElement, videoNode: HTMLVideoElement, segmentsBarOptions: HTMLElement, segments: Array<SegmentClientside>) {
     // The container for all segments
     this._parentNode = parentNode; // TODO: immutable
     this._videoNode = videoNode;
@@ -76,7 +76,10 @@ export class SegmentsBar {
     this._videoNode = null;
   }
 
-  addSegment (segment: Segment, container: HTMLElement) {
+  addSegment (segment: SegmentClientside, container: HTMLElement) {
+    if (segment.disabled) {
+      return;
+    }
     const videoDuration = this._videoNode.duration;
     const width = (segment.endTime - segment.startTime) / videoDuration * 100;
     const left = segment.startTime / videoDuration * 100;
@@ -128,7 +131,7 @@ export class SegmentsBar {
   /*
    * TODO: do nothing while bar is hidden, but then update
    */
-  set segments (value: Array<Segment>) {
+  set segments (value: Array<SegmentClientside>) {
     this._segments = value;
     this._redrawBar();
   }

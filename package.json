@@ -16,7 +16,7 @@
     "test-unit": "npm run test-unit-compile && npm run test-unit-run",
     "test-unit-compile": "./node_modules/.bin/tsc server/crypto.spec.ts",
     "test-unit-run": "./node_modules/.bin/jasmine JASMINE_CONFIG_PATH=jasmine.json",
-    "server": "node server/server.js",
+    "server": "node_modules/.bin/tsc server/server.ts && node server/server.js",
     "server-dev": "node server/server.js",
     "server-database": "rm -f database.db && curl -k -O https://sponsor.ajay.app/database.db"
   },

@@ -1,0 +1,17 @@
+{
+  "serverAddress": "https://vignette.dev/api",
+  "segmentsBar": {
+    "enabled": true,
+    "colors": {
+      "logo": "#0000ff",
+      "sponsor": "#00ff00",
+      "merch": "#00bb00",
+      "social": "#ffff00"
+    }
+  },
+  "transcriptManager": {
+    "injectionKey": "Cp"
+  },
+  "submissionManager": {
+  }
+}

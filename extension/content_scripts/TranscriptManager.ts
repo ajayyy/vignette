@@ -87,7 +87,8 @@ class TranscriptManager {
    * Injects code into the main tab context to intercept captions.
    */
   _interceptor () {
-    const payloadCode = '(' + interceptorPayload.toString() + ')()';
+    const key: string = this._options.injectionKey;
+    const payloadCode = `(${interceptor.toString()})('${key}')`;
 
     document.documentElement.setAttribute('onreset', payloadCode);
     document.documentElement.dispatchEvent(new CustomEvent('reset'));
@@ -342,9 +343,7 @@ class TranscriptManager {
 /* _yt_player is a global defined in the page context. */
 /* eslint-disable-next-line camelcase */
 declare let _yt_player: any;
-function interceptorPayload () {
-  const key = 'Ap';
-
+function interceptor (key: string) {
   // Wait untill YouTube loads
   const real = _yt_player[key];
 
@@ -353,7 +352,7 @@ function interceptorPayload () {
     return;
   }
 
-  function interceptor (url: any, params: any) {
+  function interceptorPayload (url: any, params: any) {
     // Interested only if it is a request for detailed captions
     const interested = url.startsWith('https://www.youtube.com/api/timedtext');
     if (interested) {
@@ -365,10 +364,10 @@ function interceptorPayload () {
   }
 
   try {
-    _yt_player[key] = interceptor;
+    _yt_player[key] = interceptorPayload;
     (<any>window).alreadyInjected = true;
   } catch (e) {
-    setTimeout(interceptorPayload, 100);
+    setTimeout(() => interceptor(key), 100);
   }
 }
 

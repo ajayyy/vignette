@@ -42,7 +42,7 @@
     "message": "Уникальный идентификатор: "
   },
   "options_userKeys_export": {
-    "message": "Сохранить в буфер"
+    "message": "Экспортировать"
   },
   "options_userKeys_import": {
     "message": "Импортировать"

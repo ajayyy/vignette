@@ -2,8 +2,6 @@
 
 See also: [Client and Sever API](API.md).
 
-Disclaimer: Obviously, public key crypto might seem like an overkill for this application... and it actually is. Author decided to use it not because of some formal requirement, but just because it's fun. Also, it server as a challenge to develop skills and implement a system impervious to password leaks.
-
 TL;DR: The database uses ECDSA cryptosystem on named curve P-256 and SHA-256 hashes. Users are identified by the hashes of their public keys. Every POST API transaction (database write) is signed individually by the data submitter. Optionally, users can provide a human-readable nick names. For now, users can not change their public key, but this feature will be implemented after it's clear that the proposal is reasonable (see end of the file for the proposal).
 
 ## Design

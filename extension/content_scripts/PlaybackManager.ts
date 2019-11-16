@@ -17,14 +17,14 @@
  *     pointer to it to null.
  */
 class PlaybackManager {
-  private _videoNode : HTMLVideoElement;
-  private _segments : any;
-  private _currentListenerInstance : any;
-  constructor (videoNode : HTMLVideoElement, segments : any) {
+  private _videoNode: HTMLVideoElement;
+  private _segments: Array<SegmentClientside>;
+  private _ontimeupdateInstance: (event: Event) => void;
+  constructor (videoNode: HTMLVideoElement, segments: Array<SegmentClientside>) {
     this._videoNode = videoNode;
     // Set via the actual setter
     this._segments = segments;
-    this._currentListenerInstance = null;
+    this._ontimeupdateInstance = (event) => { this._ontimeupdate(this, event); };
     this._setSegments(segments);
   }
 
@@ -35,7 +35,8 @@ class PlaybackManager {
    *       Consider using setInterval and similar functions
    *       to run code.
    */
-  _ontimeupdate (segments : any) {
+  _ontimeupdate (playbackManager: PlaybackManager, event: Event) {
+    const segments = playbackManager._segments;
     const videoNode = <HTMLVideoElement>event.target;
     if (!segments) {
       // Nothing to skip
@@ -45,30 +46,28 @@ class PlaybackManager {
 
     const currentTime = videoNode.currentTime;
     for (const segment of segments) {
-      if (segment.startTime <= currentTime && currentTime < segment.endTime) {
-        console.info('PlaybackManager: this._ontimeupdate skip to ' + segment.endTime);
+      if (!segment.disabled && segment.startTime <= currentTime && currentTime < segment.endTime) {
+        console.info('PlaybackManager: _ontimeupdate skip to ' + segment.endTime);
         videoNode.currentTime = segment.endTime;
       }
     }
   }
 
-  _setSegments (value : any) {
-    if (this._currentListenerInstance) {
-      this._videoNode.removeEventListener('timeupdate', this._currentListenerInstance);
+  _setSegments (value: Array<SegmentClientside>) {
+    if (this._ontimeupdateInstance) {
+      this._videoNode.removeEventListener('timeupdate', this._ontimeupdateInstance);
     }
     this._segments = value;
     /* Register event listener only if necessary */
     if (this._segments.length > 0) {
-      const segments = this._segments;
-      this._currentListenerInstance = () => { this._ontimeupdate(segments); };
-      this._videoNode.addEventListener('timeupdate', this._currentListenerInstance);
+      this._videoNode.addEventListener('timeupdate', this._ontimeupdateInstance);
     }
   }
 
   /*
    * Update segments and (if applicable) register ontimeupdate listener.
    */
-  set segments (value : any) {
+  set segments (value: Array<SegmentClientside>) {
     this._setSegments(value);
   }
 
@@ -76,7 +75,7 @@ class PlaybackManager {
    * Clean up.
    */
   destructor () {
-    this._videoNode.removeEventListener('timeupdate', this._currentListenerInstance);
+    this._videoNode.removeEventListener('timeupdate', this._ontimeupdateInstance);
     this._videoNode = null;
     this._segments = null;
   }

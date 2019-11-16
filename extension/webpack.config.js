@@ -36,29 +36,13 @@ function manifest (buildDirLong, mode, platform) {
   const manifest = require('./manifest.json');
   const outputPath = buildDirLong + '/manifest.json';
 
-  // Apply Firefox overrides
-  if (platform === 'firefox') {
-    const overrides = require('./manifest_override_firefox.json');
-    for (const entry in overrides) {
-      manifest[entry] = overrides[entry];
-    }
-  }
-
-  // Apply Chrome overrides
-  if (platform === 'chrome') {
-    const overrides = require('./manifest_override_chrome.json');
-    for (const entry in overrides) {
-      manifest[entry] = overrides[entry];
-    }
-  }
-
-  // Apply development overrides
-  if (mode === 'development') {
-    const overrides = require('./manifest_override_development.json');
-    for (const entry in overrides) {
-      manifest[entry] = overrides[entry];
-    }
-  }
+  Object.assign(manifest,
+    platform === 'firefox' ? require('./manifest_override_firefox.json') : null,
+    platform === 'chrome' ? require('./manifest_override_chrome.json') : null,
+    mode === 'development' ? require('./manifest_override_development.json') : null,
+    mode === 'development' && platform === 'firefox'
+      ? require('./manifest_override_development_firefox.json') : null
+  );
 
   // TODO: error handling?
   writeFile(outputPath, JSON.stringify(manifest));
@@ -69,6 +53,9 @@ function buildSass (buildDirLong, mode, platform) {
   console.log('Building SASS...', buildDirLong, mode, platform);
   sass.render({
     file: 'extension/pages/options_ui/options_ui.scss',
+    includePaths: [
+      'extension/pages/options_ui/' + platform
+    ],
     outFile: outFile,
     outputStyle: 'compressed'
     // [, options..]
@@ -82,6 +69,8 @@ function buildSass (buildDirLong, mode, platform) {
           // file written on disk
         }
       });
+    } else {
+      console.error(error);
     }
   }
   );
@@ -100,7 +89,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = (env, argv) => {
   // Environment variables
   const platform = process.env.platform || 'firefox';
-  const mode = argv.mode || process.env.mode || 'production';
+  const mode = process.env.mode || argv.mode || 'production';
 
   // build can be absolute path
   const buildDirBaseLong = path.resolve(__dirname, dir);

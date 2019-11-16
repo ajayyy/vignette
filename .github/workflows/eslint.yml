@@ -1,9 +1,9 @@
-name: Unit tests
+name: Linter
 
 on: [push]
 
 jobs:
-  test-unit:
+  eslint:
 
     runs-on: ubuntu-latest
 
@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: npm install, eslint
       run: |
         npm i
-        npm run test-unit
+        npm run eslint

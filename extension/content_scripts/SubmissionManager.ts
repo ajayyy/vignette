@@ -18,11 +18,11 @@ import { Platform } from '../../types/enums.ts';
  */
 class SubmissionManager {
   private _parentNode: HTMLElement;
-  private _segments: Array<Segment>;
+  private _segments: Array<SegmentClientside>;
   private _panel: HTMLElement;
   private _onUserInput: (message: any) => void;
   private _options: any;
-  constructor (parentNode: HTMLElement, options: any, segments: Array<Segment>, oninput: any) {
+  constructor (parentNode: HTMLElement, options: any, segments: Array<SegmentClientside>, oninput: any) {
     this._parentNode = parentNode;
     this._options = options;
     this._segments = segments;
@@ -31,7 +31,7 @@ class SubmissionManager {
     this._redraw();
   }
 
-  _informOthersOfSegmentsUpdate (segments: Array<Segment>) {
+  _informOthersOfSegmentsUpdate (segments: Array<SegmentClientside>) {
     const message = {
       type: 'segmentsChanged',
       segments: segments
@@ -83,6 +83,8 @@ class SubmissionManager {
     const ul: HTMLUListElement = <HTMLUListElement>document.createElement('UL');
     ul.style.listStyle = 'none';
 
+    this._segments = this._segments.sort((a, b) => a.startTime - b.startTime);
+
     for (let segmentIndex = 0; segmentIndex < this._segments.length; segmentIndex++) {
       const submissionManager = this;
       const segment = this._segments[segmentIndex];
@@ -91,6 +93,11 @@ class SubmissionManager {
       const label: HTMLLabelElement = <HTMLLabelElement>document.createElement('LABEL');
       const deleteButton = document.createElement('BUTTON');
       li.style.overflow = 'hidden';
+      checkbox.addEventListener('change', (event: Event) => {
+        const checked = checkbox.checked;
+        submissionManager._segments[segmentIndex].disabled = !checked;
+        this._informOthersOfSegmentsUpdate(submissionManager._segments);
+      });
       deleteButton.innerText = chrome.i18n.getMessage('submissionManager_delete_segment');
       deleteButton.style.cssFloat = 'right';
       deleteButton.addEventListener('click', () => {
@@ -102,8 +109,8 @@ class SubmissionManager {
       li.appendChild(label);
       li.appendChild(deleteButton);
       checkbox.type = 'checkbox';
-      checkbox.checked = true;
-      label.innerText = segment.type + ': ' + this._secondsToText(segment.startTime) + ' -> ' + this._secondsToText(segment.endTime);
+      checkbox.checked = Boolean(!segment.disabled);
+      label.innerText = segment.type + ': ' + this._secondsToText(segment.startTime) + ' ⟶ ' + this._secondsToText(segment.endTime);
       ul.appendChild(li);
     }
     panel.appendChild(ul);
@@ -146,7 +153,7 @@ class SubmissionManager {
     this._panel = panel;
   }
 
-  _setSegments (value: Array<Segment>) {
+  _setSegments (value: Array<SegmentClientside>) {
     this._segments = value;
     this._redraw();
   }
@@ -154,7 +161,7 @@ class SubmissionManager {
   /*
    * Update segments and (if applicable) register ontimeupdate listener.
    */
-  set segments (value: Array<Segment>) {
+  set segments (value: Array<SegmentClientside>) {
     this._setSegments(value);
   }
 

@@ -1,7 +1,5 @@
 # About
 
-[![Build Status](https://travis-ci.org/bershanskiy/vignette.svg?branch=master)](https://travis-ci.org/bershanskiy/vignette)
-
 [![Dependencies](https://david-dm.org/bershanskiy/vignette.svg)](https://david-dm.org/bershanskiy/vignette)
 
 Skip boring parts of YouTube videos like intros, sponsorship plugs, merch announcements, calls for comments/likes/subscriptions and social media promotions. All without compromising your computer performance, browser security or your privacy!

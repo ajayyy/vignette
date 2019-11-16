@@ -60,7 +60,7 @@
     "description": "The display field label for user unique identifier."
   },
   "options_userKeys_export": {
-    "message": "Export to clipboard",
+    "message": "Export",
     "description": "The button that displays the user private key so that it can be backed up."
   },
   "options_userKeys_import": {

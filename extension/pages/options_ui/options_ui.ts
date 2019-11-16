@@ -200,18 +200,27 @@ function enableFormInteractivity () {
     upload(importKey_);
   };
 
+  function download (filename: string, text: string) {
+    const element = document.createElement('a');
+
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
   // Export user keys to external backup (download as a file)
-  // TODO: 1. Actually download a file (not just write to clipboard)
+  // TODO: 1. Offer to download or copy key to clipboard
   //       2. Display download button only if there is a key to be exported
   document.getElementById('userKeys_export').onclick = (a) => {
-    function keyExportFailed (error: Error) {
-      console.error('Could not export key', error);
-    }
-    exportKey((key: any) => {
-      const text = JSON.stringify(key);
-      navigator.clipboard.writeText(text)
-        .then(() => console.info('Key copied'))
-        .catch(keyExportFailed);
+    exportKey((keyData: any) => {
+      const filename = keyData.userID + '.jwk';
+      const text = JSON.stringify(keyData.privateKey);
+      download(filename, text);
     });
   };
 }

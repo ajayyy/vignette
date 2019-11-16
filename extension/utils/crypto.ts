@@ -118,18 +118,22 @@ async function signMessage (message : string) {
 }
 
 function exportKey (callback : any) {
-  chrome.storage.sync.get(['privateKey'], data => {
-    const key = data.privateKey;
-    if (!key) {
+  chrome.storage.sync.get(['userID', 'privateKey'], data => {
+    const userID = data.userID;
+    const privateKey = data.privateKey;
+    if (!privateKey || !userID) {
       return null;
     }
     // Export only the important parameters
     const minimal = {
-      kty: key.kty,
-      crv: key.crv,
-      x: key.x,
-      y: key.y,
-      d: key.d
+      userID: userID,
+      privateKey: {
+        kty: privateKey.kty,
+        crv: privateKey.crv,
+        x: privateKey.x,
+        y: privateKey.y,
+        d: privateKey.d
+      }
     };
 
     callback(minimal);
