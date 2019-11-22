@@ -118,7 +118,7 @@ async function signMessage (message: string) {
 }
 
 async function verifyMessage (message: any) {
-  return true
+  return true;
 }
 
 function exportKey (callback : any) {
