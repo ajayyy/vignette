@@ -4,11 +4,11 @@ import { storageGet } from './promissified.ts';
  * Checks endiadness of the system
  * (to validate that TextEncoder works as expected.
  */
-function systemIsLittleEndian () {
+function systemIsLittleEndian (): boolean {
   return ((new Uint32Array((new Uint8Array([1, 2, 3, 4])).buffer))[0] === 0x04030201);
 }
 
-function ArrayBufferToString (arrayBuffer : any) {
+function ArrayBufferToString (arrayBuffer: any): string {
   const exportedAsString = String.fromCharCode.apply(null, new Uint8Array(arrayBuffer));
   const exportedAsBase64 = window.btoa(exportedAsString);
   return exportedAsBase64;
@@ -19,7 +19,7 @@ function ArrayBufferToString (arrayBuffer : any) {
  * This is necessary to avoid ambiguety of key representation
  * by JSON.stringify()
  */
-function stringifyPublicKey (key : any) {
+function stringifyPublicKey (key : any): string {
   return '{' +
     '"kty":"' + key.kty + '",' +
     '"crv":"' + key.crv + '",' +
@@ -84,7 +84,7 @@ async function generateUserKeys () {
   return userID;
 }
 
-async function signMessage (message : string) {
+async function signMessage (message: string) {
   const data = <any>(await storageGet('privateKey'));
 
   const privateKeyData = data.privateKey;
@@ -115,6 +115,10 @@ async function signMessage (message : string) {
   const stringifiedSignature = ArrayBufferToString(signature);
 
   return stringifiedSignature;
+}
+
+async function verifyMessage (message: any) {
+  return true
 }
 
 function exportKey (callback : any) {
@@ -158,4 +162,4 @@ async function importKey (privateKey : any) {
   return userID;
 }
 
-export { generateUserKeys, signMessage, exportKey, importKey };
+export { generateUserKeys, signMessage, verifyMessage, exportKey, importKey };

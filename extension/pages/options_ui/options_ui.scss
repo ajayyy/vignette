@@ -18,10 +18,11 @@ button {
   cursor: pointer;
   font-weight: 500 !important;
   height: $cr-button-height;
+  background-color: $button-background-color-light;
   border-color: $button-border-color-light;
-  border-width: 1px;
+  border-width: $button-border-width;
   border-style: solid;
-  border-radius: 4px;
+  border-radius: $button-border-radius;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
@@ -36,7 +37,7 @@ button {
     color: $text-color-dark;
   }
   button {
-    background-color: $main-bg-color-dark;
+    background-color: $button-background-color-dark;
     border-color: $botton-border-color-dark;
     color: $button-color-dark;
   }

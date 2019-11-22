@@ -6,16 +6,20 @@ $cr-secondary-text-color-light: rgb(94,99,104);
 $internal-root-color-dark: rgb(233,234,237);
 $internal-root-color-light: rgb(32,33,36);
 
+$button-border-width: 1px;
+$button-border-radius: 4px;
 
 /* Light colors */
 $main-bg-color-light: white;
 $section-border-top: 1px solid rgb(240,240,240);
+$button-background-color-light: $main-bg-color-light;
 $button-border-color-light: rgb(219,220,224);
 $button-color-light: rgb(26, 115, 232);
 
 /* Dark colors */
 $main-bg-color-dark: rgb(41,42,45);
 $section-border-top-dark: 1px solid rgba(255,255,255,.1);
+$button-background-color-dark: $main-bg-color-dark;
 $botton-border-color-dark: rgb(96, 99, 103); //!
 $button-color-dark: rgb(138, 180, 248);
 
