@@ -6,3 +6,10 @@ server/options.json
 server/server.js
 extension/options.json
 *.spec.js
+
+
+# Docs built files
+docs/.bundle/
+docs/Gemfile.lock
+docs/_site/
+docs/vendor/
