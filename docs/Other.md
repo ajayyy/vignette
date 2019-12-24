@@ -6,7 +6,7 @@
 |----------------|-------------------------------------------------------|-----------------------------------------------------------|-----------------------|--------------------------|
 | Vignette       | Good                                                  | Strong Public Key cryptography[1]                         | Near real-time        | Any                      |
 | SponsorBlock   | Poor: collects viewership information by default (if not disabled) | Non-standard, but not trivially breakable cryptography[2] | Near real-time        | Sponsors only            |
-| Video Segments | Good                                                  | Password-based[3]                                         | Near real-time        | No differentiation       |
+| Video Segments | Good                                                  | Password-based[3]                                         | After being manually approved by the extension owner        | No differentiation       |
 | Skipper        |                                                       | N/A                                                       | Via extension updates | Music videos only        |
 
 Notes:
