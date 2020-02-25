@@ -2,17 +2,18 @@
 
 ## Summary
 
-| Extension      | Privacy                                               | Authentication                                            | Data update           | Segment Categories/Types |
-|----------------|-------------------------------------------------------|-----------------------------------------------------------|-----------------------|--------------------------|
-| Vignette       | Good                                                  | Strong Public Key cryptography[1]                         | Near real-time        | Any                      |
-| SponsorBlock   | Poor: collects viewership information by default (if not disabled) | Non-standard, but not trivially breakable cryptography[2] | Near real-time        | Sponsors only            |
-| Video Segments | Good                                                  | Password-based[3]                                         | After being manually approved by the extension owner        | No differentiation       |
-| Skipper        |                                                       | N/A                                                       | Via extension updates | Music videos only        |
+| Extension      | Privacy          | Authentication                                            | Data update           | Segment Categories/Types |
+|----------------|------------------|-----------------------------------------------------------|-----------------------|--------------------------|
+| Vignette       | Good             | Strong Public Key cryptography<sup>1</sup>                | Near real-time        | Any                      |
+| SponsorBlock   | Poor<sup>2</sup> | Non-standard, but not trivially breakable cryptography<sup>3</sup> | Near real-time        | Sponsors only            |
+| Video Segments | Good             | Password-based<sup>4</sup>                                 | After being manually approved by the extension owner        | No differentiation       |
+| Skipper        | Good             | N/A                                                       | Via extension updates | Music videos only        |
 
 Notes:
  1. Every authenticated message is signed with standard 256-bit ECDSA key. See [Cryptography](Cryptography.md) for details.
- 2. Extension generates unique identifier and then submits it as an authentication token, that can never be changed. The server uses non-standard algorithm: server hashes the token 5000 times with strong SHA-256 function and compares to stored a hash. This algorithm is slow (~5000 times slower, obviously), does and does not grant any additional security (there are no publicly known preimage attacks against SHA-256) and instead introduces possibility collisions (intermediate hash collision is more likely than a single hash collision and thus might enable cyclographic (birthday-style) attack). In practice, it's perfectly fine because resources required for finding a hash preimage are still humongous.
- 3. Well-implemented conventional email & password authentication, user can change the password (good), but password strength is chosen by user (user can choose weak password).
+ 2. Collects video viewership information without consent or even notifying user of any data collection (can be disabled)
+ 3. Extension generates unique identifier and then submits it as an authentication token, that can never be changed. The server uses non-standard algorithm: server hashes the token 5000 times with strong SHA-256 function and compares to stored a hash. This algorithm is slow (~5000 times slower, obviously), does and does not grant any additional security (there are no publicly known preimage attacks against SHA-256) and instead introduces possibility collisions (intermediate hash collision is more likely than a single hash collision and thus might enable cyclographic (birthday-style) attack). In practice, it's perfectly fine because resources required for finding a hash preimage are still humongous.
+ 4. Well-implemented conventional email & password authentication, user can change the password (good), but password strength is chosen by user (user can choose weak password).
 
 ## Skipper - Music Mode for YouTube™
  - [Chrome store](https://chrome.google.com/webstore/detail/skipper-music-mode-for-yo/chojffponkoboggmjpnkflkbcelacijk)
